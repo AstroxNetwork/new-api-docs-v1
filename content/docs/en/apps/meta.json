@@ -6,6 +6,7 @@
   "pages": [
     "index",
     "aionui",
+    "cc-switch",
     "cherry-studio",
     "fluent-read",
     "openclaw",
