@@ -97,7 +97,7 @@ Edit the `docker-compose.yml` file:
 environment:
   - UMAMI_WEBSITE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
   # Optional: Only required for self-hosted instances
-  - UMAMI_SCRIPT_URL=https://your-umami-domain.com/script.js
+  - UMAMI_SCRIPT_URL=https://<your-umami-domain>/script.js
 ```
 
 **Standalone Deployment:**
@@ -106,7 +106,7 @@ Add to the `.env` file:
 
 ```bash
 export UMAMI_WEBSITE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-export UMAMI_SCRIPT_URL=https://your-umami-domain.com/script.js  # Optional
+export UMAMI_SCRIPT_URL=https://<your-umami-domain>/script.js  # Optional
 ```
 
 **Note:** If using Umami Cloud, you do not need to set `UMAMI_SCRIPT_URL`, as it uses the official URL by default.

@@ -1,4 +1,4 @@
-﻿---
+---
 title: 分析工具设置指南
 ---
 
@@ -97,7 +97,7 @@ docker-compose down && docker-compose up -d
 environment:
   - UMAMI_WEBSITE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
   # 可选：仅自托管实例需要
-  - UMAMI_SCRIPT_URL=https://your-umami-domain.com/script.js
+  - UMAMI_SCRIPT_URL=https://<your-umami-domain>/script.js
 ```
 
 **独立部署：**
@@ -106,7 +106,7 @@ environment:
 
 ```bash
 export UMAMI_WEBSITE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-export UMAMI_SCRIPT_URL=https://your-umami-domain.com/script.js  # 可选
+export UMAMI_SCRIPT_URL=https://<your-umami-domain>/script.js  # 可选
 ```
 
 **注意：** 如果使用 Umami Cloud，不需要设置 `UMAMI_SCRIPT_URL`，因为它默认使用官方 URL。

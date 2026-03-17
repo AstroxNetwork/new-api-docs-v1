@@ -97,7 +97,7 @@ docker-compose down && docker-compose up -d
 environment:
   - UMAMI_WEBSITE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
   # オプション：セルフホストインスタンスのみ必要
-  - UMAMI_SCRIPT_URL=https://your-umami-domain.com/script.js
+  - UMAMI_SCRIPT_URL=https://<your-umami-domain>/script.js
 ```
 
 **スタンドアロンデプロイメントの場合：**
@@ -106,7 +106,7 @@ environment:
 
 ```bash
 export UMAMI_WEBSITE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-export UMAMI_SCRIPT_URL=https://your-umami-domain.com/script.js  # オプション
+export UMAMI_SCRIPT_URL=https://<your-umami-domain>/script.js  # オプション
 ```
 
 **注意：** Umami Cloudを使用する場合、`UMAMI_SCRIPT_URL`は公式URLがデフォルトで使用されるため、設定する必要はありません。
