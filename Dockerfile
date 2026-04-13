@@ -7,7 +7,7 @@ RUN apk add --no-cache libc6-compat git python3 make g++
 WORKDIR /app
 
 # 复制依赖文件
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 
 # 🔥 终极修复：全程跳过所有 postinstall 脚本
 RUN bun install --frozen-lockfile --ignore-scripts
