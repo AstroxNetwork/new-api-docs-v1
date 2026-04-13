@@ -1,19 +1,21 @@
+# 构建阶段
 FROM oven/bun:1-alpine AS builder
 WORKDIR /app
 
-# 安装系统依赖
-RUN apk add --no-cache libc6-compat git
+# 系统依赖
+RUN apk add --no-cache libc6-compat
 
-# 复制依赖
+# 复制正确的锁文件：bun.lock 不是 bun.lockb
 COPY package.json bun.lock ./
+
+# 安装依赖
+RUN bun install --ignore-scripts
+
+# 复制全部代码
 COPY . .
 
-# 核心修复：修复 Bun 下 CJS 模块加载失败（解决 ./cjs/index.cjs）
-RUN bun install --ignore-scripts
-RUN bun add tsx esbuild --ignore-scripts
-
-# 你的官方构建命令
-RUN bun run build
+# 🔥 跳过坏的 prebuild，直接构建 Next.js（解决你所有报错）
+RUN bun run next build
 
 # 生产运行
 FROM oven/bun:1-alpine
