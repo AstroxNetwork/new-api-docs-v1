@@ -1,41 +1,18 @@
-# 官方 Next.js 稳定模板 + 多阶段构建
-FROM node:20-alpine AS base
+FROM oven/bun:1-alpine
 
-# 构建阶段
-FROM base AS builder
+# 安装系统依赖（解决 esbuild 问题）
+RUN apk add --no-cache libc-utils
+
 WORKDIR /app
 
-# 安装依赖工具
-RUN apk add --no-cache libc6-compat git
-
-# 只复制锁文件 + package.json
+# 复制文件
 COPY package.json bun.lock ./
-
-# 强制安装，不校验 peerDependency，不运行脚本（从根源解决所有报错）
-RUN npm install --legacy-peer-deps --ignore-scripts
-
-# 复制项目
 COPY . .
 
-# 构建
-RUN npm run build
+# 严格按照你给的命令执行
+RUN bun install
+RUN bun run build
 
-# 运行阶段
-FROM base AS runner
-WORKDIR /app
-
-ENV NODE_ENV production
-
-# 安全权限
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-USER nextjs
-
-# 复制构建产物
-COPY --from=builder /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./
-
+# 运行
 EXPOSE 3000
-CMD ["npm", "start"]
+CMD ["bun", "start"]
