@@ -22,6 +22,7 @@ FROM oven/bun:1-alpine
 WORKDIR /app
 
 ENV NODE_ENV=production
+ENV VERCEL_PROJECT_PRODUCTION_URL=llm.holycrab.ai
 
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
