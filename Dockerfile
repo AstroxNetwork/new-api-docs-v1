@@ -5,7 +5,7 @@ WORKDIR /app
 RUN apk add --no-cache libc6-compat git
 
 # 复制依赖
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 COPY . .
 
 # 核心修复：修复 Bun 下 CJS 模块加载失败（解决 ./cjs/index.cjs）
