@@ -9,7 +9,7 @@ WORKDIR /app
 RUN apk add --no-cache libc6-compat git
 
 # 只复制锁文件 + package.json
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 
 # 强制安装，不校验 peerDependency，不运行脚本（从根源解决所有报错）
 RUN npm install --legacy-peer-deps --ignore-scripts
