@@ -5,7 +5,7 @@ FROM oven/bun:1-alpine AS builder
 WORKDIR /app
 
 # 复制 package 相关文件（利用 Docker 缓存）
-COPY package.json bun.lockb ./
+COPY package.json bun.lock ./
 
 # 安装依赖
 RUN bun install --frozen-lockfile
