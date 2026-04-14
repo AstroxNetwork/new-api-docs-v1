@@ -43,17 +43,7 @@ export function GlobalBanner({ lang }: { lang?: string }) {
 
   return (
     <Banner id={id} variant={variant as BannerVariant}>
-      <span className="text-center">
-        {content.message}{' '}
-        <Link
-          href={linkUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-fd-primary inline-flex font-semibold whitespace-nowrap underline underline-offset-2"
-        >
-          {content.linkText}
-        </Link>
-      </span>
+    
     </Banner>
   );
 }

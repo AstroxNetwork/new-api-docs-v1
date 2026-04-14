@@ -130,7 +130,7 @@ export default async function Page({
             {content.subtitle}{' '}
             <span className="text-brand">{content.highlight}</span>.
           </h1>
-          <div className="flex w-fit flex-row flex-wrap items-center justify-center gap-4">
+          {/* <div className="flex w-fit flex-row flex-wrap items-center justify-center gap-4">
             <Link
               href={getLocalePath(lang, 'docs')}
               className="bg-brand text-brand-foreground hover:bg-brand-200 inline-flex items-center justify-center gap-2 rounded-full px-5 py-3 font-medium tracking-tight transition-colors max-sm:text-sm"
@@ -147,12 +147,12 @@ export default async function Page({
               <Github className="size-4" />
               {content.github}
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* Partners Section */}
-      <section className="mx-auto mt-12 max-w-[1400px] px-4 text-center">
+      {/* <section className="mx-auto mt-12 max-w-[1400px] px-4 text-center">
         <h2 className="text-2xl font-semibold md:text-3xl">
           {content.partnersTitle}
         </h2>
@@ -180,10 +180,10 @@ export default async function Page({
             </a>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* Sponsor Partners Section */}
-      <section className="mx-auto mt-16 max-w-[1400px] px-4 text-center">
+      {/* <section className="mx-auto mt-16 max-w-[1400px] px-4 text-center">
         <h2 className="text-2xl font-semibold md:text-3xl">
           {content.sponsorPartnersTitle}
         </h2>
@@ -217,10 +217,10 @@ export default async function Page({
             </a>
           ))}
         </div>
-      </section>
+      </section> */}
 
       {/* Development Contributors Section */}
-      <section className="mx-auto mt-16 max-w-[1400px] px-4 text-center">
+      {/* <section className="mx-auto mt-16 max-w-[1400px] px-4 text-center">
         <h2 className="text-2xl font-semibold md:text-3xl">
           {content.devContributorsTitle}
         </h2>
@@ -239,10 +239,10 @@ export default async function Page({
             />
           </a>
         </div>
-      </section>
+      </section> */}
 
       {/* Documentation Contributors Section */}
-      <section className="mx-auto mt-16 max-w-[1400px] px-4 text-center">
+      {/* <section className="mx-auto mt-16 max-w-[1400px] px-4 text-center">
         <h2 className="text-2xl font-semibold md:text-3xl">
           {content.docsContributorsTitle}
         </h2>
@@ -261,9 +261,9 @@ export default async function Page({
             />
           </a>
         </div>
-      </section>
+      </section> */}
 
-      <AntifraudDialog lang={lang} />
+      {/* <AntifraudDialog lang={lang} /> */}
     </main>
   );
 }
