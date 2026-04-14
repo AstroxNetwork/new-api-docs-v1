@@ -2,6 +2,21 @@ import { createOpenAPI } from 'fumadocs-openapi/server';
 import { readdir, readFile } from 'node:fs/promises';
 import path from 'node:path';
 
+const DEFAULT_OPENAPI_SERVER_URL = 'https://llm.holycrab.ai';
+
+function applyGlobalServer(doc: unknown): unknown {
+  if (!doc || typeof doc !== 'object') return doc;
+
+  const serverUrl =
+    process.env.OPENAPI_SERVER_URL?.trim() || DEFAULT_OPENAPI_SERVER_URL;
+
+  return {
+    ...(doc as Record<string, unknown>),
+    // Force a global server to keep all cURL examples consistent.
+    servers: [{ url: serverUrl }],
+  };
+}
+
 async function walkJsonFiles(dir: string): Promise<string[]> {
   const out: string[] = [];
   async function walk(current: string) {
@@ -26,8 +41,11 @@ async function walkJsonFiles(dir: string): Promise<string[]> {
 }
 
 export const openapi = createOpenAPI({
-  // Set proxy URL to resolve CORS issues
-  proxyUrl: '/api/proxy',
+  // Keep proxy configurable. When set, API try-it calls go through this route.
+  // Leave empty to let docs use upstream server URL directly.
+  ...(process.env.OPENAPI_PROXY_URL?.trim()
+    ? { proxyUrl: process.env.OPENAPI_PROXY_URL.trim() }
+    : {}),
   // Always load generated per-endpoint OpenAPI files (clean single source of truth)
   async input() {
     const files = await walkJsonFiles('./openapi/generated');
@@ -39,7 +57,7 @@ export const openapi = createOpenAPI({
     const entries = await Promise.all(
       files.map(async (p) => {
         const raw = await readFile(p, 'utf8');
-        return [p, JSON.parse(raw)] as const;
+        return [p, applyGlobalServer(JSON.parse(raw))] as const;
       })
     );
     return Object.fromEntries(entries);
