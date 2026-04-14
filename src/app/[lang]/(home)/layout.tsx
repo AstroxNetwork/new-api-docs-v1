@@ -142,16 +142,16 @@ export default async function Layout({
         {...baseOptions(lang)}
         links={[
           // Mobile menu
-          {
-            type: 'menu',
-            on: 'menu',
-            text: texts.title.text,
-            items: navItems.map(({ text, url, Icon }) => ({
-              text,
-              url,
-              icon: <Icon />,
-            })),
-          },
+          // {
+          //   type: 'menu',
+          //   on: 'menu',
+          //   text: texts.title.text,
+          //   items: navItems.map(({ text, url, Icon }) => ({
+          //     text,
+          //     url,
+          //     icon: <Icon />,
+          //   })),
+          // },
           {
             type: 'main',
             on: 'menu',
@@ -176,40 +176,6 @@ export default async function Layout({
                 <NavbarMenuTrigger>
                   <Link href={docsUrl}>{texts.title.text}</Link>
                 </NavbarMenuTrigger>
-                <NavbarMenuContent className="text-[15px]">
-                  {/* First item with preview image */}
-                  <NavbarMenuLink href={docsUrl} className="md:row-span-2">
-                    <div className="-mx-3 -mt-3">
-                      <Image
-                        src={Preview}
-                        alt="Preview"
-                        className="rounded-t-lg object-cover"
-                        loading="lazy"
-                        fetchPriority="low"
-                        style={{
-                          maskImage:
-                            'linear-gradient(to bottom,white 60%,transparent)',
-                        }}
-                      />
-                    </div>
-                    <p className="font-medium">{navItems[0].text}</p>
-                    <p className="text-fd-muted-foreground text-sm">
-                      {navItems[0].desc}
-                    </p>
-                  </NavbarMenuLink>
-                  {/* Second column */}
-                  <MenuLinkItem item={navItems[1]} className="lg:col-start-2" />
-                  <MenuLinkItem item={navItems[2]} className="lg:col-start-2" />
-                  {/* Third column */}
-                  <MenuLinkItem
-                    item={navItems[3]}
-                    className="lg:col-start-3 lg:row-start-1"
-                  />
-                  <MenuLinkItem
-                    item={navItems[4]}
-                    className="lg:col-start-3 lg:row-start-2"
-                  />
-                </NavbarMenuContent>
               </NavbarMenu>
             ),
           },
